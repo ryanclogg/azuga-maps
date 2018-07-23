@@ -1,2 +1,467 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<html lang="en" class="gr__webtechnocrats_website"><head><style type="text/css">.gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div{font-weight:400}
+</style><link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"><style type="text/css">.gm-style .gm-style-cc span,.gm-style .gm-style-cc a,.gm-style .gm-style-mtc div{font-size:10px}
+</style><style type="text/css">@media print {  .gm-style .gmnoprint, .gmnoprint {    display:none  }}@media screen {  .gm-style .gmnoscreen, .gmnoscreen {    display:none  }}</style><style type="text/css">.pac-container{background-color:#fff;position:absolute!important;z-index:1000;border-radius:2px;border-top:1px solid #d9d9d9;font-family:Arial,sans-serif;box-shadow:0 2px 6px rgba(0,0,0,0.3);-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;overflow:hidden}.pac-logo:after{content:"";padding:1px 1px 1px 0;height:16px;text-align:right;display:block;background-image:url(https://maps.gstatic.com/mapfiles/api-3/images/powered-by-google-on-white3.png);background-position:right;background-repeat:no-repeat;background-size:120px 14px}.hdpi.pac-logo:after{background-image:url(https://maps.gstatic.com/mapfiles/api-3/images/powered-by-google-on-white3_hdpi.png)}.pac-item{cursor:default;padding:0 4px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;line-height:30px;text-align:left;border-top:1px solid #e6e6e6;font-size:11px;color:#999}.pac-item:hover{background-color:#fafafa}.pac-item-selected,.pac-item-selected:hover{background-color:#ebf2fe}.pac-matched{font-weight:700}.pac-item-query{font-size:13px;padding-right:3px;color:#000}.pac-icon{width:15px;height:20px;margin-right:7px;margin-top:6px;display:inline-block;vertical-align:top;background-image:url(https://maps.gstatic.com/mapfiles/api-3/images/autocomplete-icons.png);background-size:34px}.hdpi .pac-icon{background-image:url(https://maps.gstatic.com/mapfiles/api-3/images/autocomplete-icons_hdpi.png)}.pac-icon-search{background-position:-1px -1px}.pac-item-selected .pac-icon-search{background-position:-18px -1px}.pac-icon-marker{background-position:-1px -161px}.pac-item-selected .pac-icon-marker{background-position:-18px -161px}.pac-placeholder{color:gray}
+</style><style type="text/css">.gm-style-pbc{transition:opacity ease-in-out;background-color:rgba(0,0,0,0.45);text-align:center}.gm-style-pbt{font-size:22px;color:white;font-family:Roboto,Arial,sans-serif;position:relative;margin:0;top:50%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}
+</style>
+<meta charset="UTF-8">
+<title>Google Map Area Calculator</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="facebox/facebox.css" media="all" rel="stylesheet" type="text/css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+#map_canvas {
+  width:100%;
+  height:600px;
+}
+#areaPointBtns {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+</style>
+<script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/33/8/common.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/33/8/util.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/33/8/geocoder.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/33/8/map.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/33/8/poly.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/33/8/controls.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/33/8/places_impl.js"></script><style type="text/css">.gm-style {
+  font: 400 11px Roboto, Arial, sans-serif;
+  text-decoration: none;
+}
+.gm-style img { max-width: none; }</style><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/33/8/onion.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/33/8/marker.js"></script><script style="display: none;">var tvt = tvt || {}; tvt.captureVariables = function(a){for(var b=
+  new Date,c={},d=Object.keys(a||{}),e=0,f;f=d[e];e++)if(a.hasOwnProperty(f)&&"undefined"!=typeof a[f])try{var g=[];c[f]=JSON.stringify(a[f],function(a,b){try{if("function"!==typeof b){if("object"===typeof b&&null!==b){if(b instanceof HTMLElement||b instanceof Node||-1!=g.indexOf(b))return;g.push(b)}return b}}catch(H){}})}catch(l){}a=document.createEvent("CustomEvent");a.initCustomEvent("TvtRetrievedVariablesEvent",!0,!0,{variables:c,date:b});window.dispatchEvent(a)};window.setTimeout(function() {tvt.captureVariables({'dataLayer.hide': (function(a){a=a.split(".");for(var b=window,c=0;c<a.length&&(b=b[a[c]],b);c++);return b})('dataLayer.hide'),'gaData': window['gaData'],'dataLayer': window['dataLayer']})}, 2000);</script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/33/8/stats.js"></script></head>
+  <body data-gr-c-s-loaded="true">
+    <main role="main">
+
+      <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="col-md-12">
+            <h2>TCLA Area Measuring Caulculator</h2>
+            <div class="col-md-12" style="padding-left:0px;">
+              <input type="text" class="form-control mr-sm-2" name="addressInput" id="addressInput" placeholder="Enter address here.." style="display:initial;width:60% " autocomplete="on">
+              <button class="btn btn-primary" onclick="showAddress(document.getElementById('addressInput').value);">Search</button>
+            </div>
+          </div>
+          <div class="col-md-12" id="areaPointBtns">
+            <button id="menus_zoom_to_area" type="button" class="btn btn-info btn-sm" onclick="zoomToPoly();">Zoom to Area</button>
+            <button id="menus_clear_last_point" type="button" class="btn btn-info btn-sm" onclick="removeLastPoint();">Clear Last Point</button>
+            <button id="menus_clear_all_points" type="button" class="btn btn-info btn-sm" onclick="clearMap();">Clear All</button>
+          </div>
+          <div class="col-md-12" id="status"></div>
+          <div class="col-md-12 map_canvasContainer">
+            <div id="map_area" style="height: 690px;">
+              <div id="map_canvas" style="height: 690px; position: relative; overflow: hidden;"><div style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: rgb(229, 227, 223);"><div class="gm-style" style="position: absolute; z-index: 0; left: 0px; top: 0px; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px;"><div tabindex="0" style="position: absolute; z-index: 0; left: 0px; top: 0px; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; cursor: crosshair; touch-action: pan-x pan-y;"><div style="z-index: 1; position: absolute; left: 50%; top: 50%; transform: translate(0px, 0px);"><div style="position: absolute; left: 0px; top: 0px; z-index: 100; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div style="position: absolute; z-index: 1; transform: matrix(1, 0, 0, 1, 0, -195);"><div style="position: absolute; left: 0px; top: 256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -256px; top: 256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -256px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 256px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 256px; top: 256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 256px; top: 512px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 0px; top: 512px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -256px; top: 512px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -512px; top: 512px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -512px; top: 256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -512px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -512px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -256px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 0px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 256px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div></div></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 101; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 102; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 103; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: -1;"><div style="position: absolute; z-index: 1; transform: matrix(1, 0, 0, 1, 0, -195);"><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 0px; top: 256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -256px; top: 256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -256px; top: 0px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 0px; top: 0px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 256px; top: 0px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 256px; top: 256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 256px; top: 512px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 0px; top: 512px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -256px; top: 512px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -512px; top: 512px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -512px; top: 256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -512px; top: 0px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -512px; top: -256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -256px; top: -256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 0px; top: -256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 256px; top: -256px;"></div></div></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div style="position: absolute; z-index: 1; transform: matrix(1, 0, 0, 1, 0, -195);"><div style="position: absolute; left: 0px; top: 256px; width: 256px; height: 256px;"><img draggable="false" alt="" src="https://khms0.googleapis.com/kh?v=802&amp;hl=en-US&amp;x=2&amp;y=2&amp;z=2" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -256px; top: 256px; width: 256px; height: 256px;"><img draggable="false" alt="" src="https://khms1.googleapis.com/kh?v=802&amp;hl=en-US&amp;x=1&amp;y=2&amp;z=2" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -256px; top: 0px; width: 256px; height: 256px;"><img draggable="false" alt="" src="https://khms1.googleapis.com/kh?v=802&amp;hl=en-US&amp;x=1&amp;y=1&amp;z=2" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px;"><img draggable="false" alt="" src="https://khms0.googleapis.com/kh?v=802&amp;hl=en-US&amp;x=2&amp;y=1&amp;z=2" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 256px; top: 0px; width: 256px; height: 256px;"><img draggable="false" alt="" src="https://khms1.googleapis.com/kh?v=802&amp;hl=en-US&amp;x=3&amp;y=1&amp;z=2" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 256px; top: 256px; width: 256px; height: 256px;"><img draggable="false" alt="" src="https://khms1.googleapis.com/kh?v=802&amp;hl=en-US&amp;x=3&amp;y=2&amp;z=2" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 256px; top: 512px; width: 256px; height: 256px;"><img draggable="false" alt="" src="https://khms1.googleapis.com/kh?v=802&amp;hl=en-US&amp;x=3&amp;y=3&amp;z=2" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 0px; top: 512px; width: 256px; height: 256px;"><img draggable="false" alt="" src="https://khms0.googleapis.com/kh?v=802&amp;hl=en-US&amp;x=2&amp;y=3&amp;z=2" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -256px; top: 512px; width: 256px; height: 256px;"><img draggable="false" alt="" src="https://khms1.googleapis.com/kh?v=802&amp;hl=en-US&amp;x=1&amp;y=3&amp;z=2" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -512px; top: 512px; width: 256px; height: 256px;"><img draggable="false" alt="" src="https://khms0.googleapis.com/kh?v=802&amp;hl=en-US&amp;x=0&amp;y=3&amp;z=2" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -512px; top: 256px; width: 256px; height: 256px;"><img draggable="false" alt="" src="https://khms0.googleapis.com/kh?v=802&amp;hl=en-US&amp;x=0&amp;y=2&amp;z=2" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -512px; top: 0px; width: 256px; height: 256px;"><img draggable="false" alt="" src="https://khms0.googleapis.com/kh?v=802&amp;hl=en-US&amp;x=0&amp;y=1&amp;z=2" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -512px; top: -256px; width: 256px; height: 256px;"><img draggable="false" alt="" src="https://khms0.googleapis.com/kh?v=802&amp;hl=en-US&amp;x=0&amp;y=0&amp;z=2" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -256px; top: -256px; width: 256px; height: 256px;"><img draggable="false" alt="" src="https://khms1.googleapis.com/kh?v=802&amp;hl=en-US&amp;x=1&amp;y=0&amp;z=2" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 0px; top: -256px; width: 256px; height: 256px;"><img draggable="false" alt="" src="https://khms0.googleapis.com/kh?v=802&amp;hl=en-US&amp;x=2&amp;y=0&amp;z=2" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 256px; top: -256px; width: 256px; height: 256px;"><img draggable="false" alt="" src="https://khms1.googleapis.com/kh?v=802&amp;hl=en-US&amp;x=3&amp;y=0&amp;z=2" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div></div></div><div class="gm-style-pbc" style="z-index: 2; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px; opacity: 0;"><p class="gm-style-pbt"></p></div><div style="z-index: 3; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px; touch-action: pan-x pan-y;"><div style="z-index: 4; position: absolute; left: 50%; top: 50%; transform: translate(0px, 0px);"><div style="position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 107; width: 100%;"></div></div></div></div><iframe frameborder="0" style="z-index: -1; position: absolute; width: 100%; height: 100%; top: 0px; left: 0px; border: none;" src="about:blank" kwframeid="1"></iframe><div style="margin-left: 5px; margin-right: 5px; z-index: 1000000; position: absolute; left: 0px; bottom: 0px;"><a target="_blank" rel="noopener" href="https://maps.google.com/maps?ll=21,0&amp;z=2&amp;t=k&amp;hl=en-US&amp;gl=US&amp;mapclient=apiv3" title="Click to see this area on Google Maps" style="position: static; overflow: visible; float: none; display: inline;"><div style="width: 66px; height: 26px; cursor: pointer;"><img alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/google_white5_hdpi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 66px; height: 26px; user-select: none; border: 0px; padding: 0px; margin: 0px;"></div></a></div><div style="background-color: white; padding: 15px 21px; border: 1px solid rgb(171, 171, 171); font-family: Roboto, Arial, sans-serif; color: rgb(34, 34, 34); box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px; z-index: 10000002; display: none; width: 256px; height: 148px; position: absolute; left: 210px; top: 255px;"><div style="padding: 0px 0px 10px; font-size: 16px;">Map Data</div><div style="font-size: 13px;">Imagery ©2018 NASA, TerraMetrics</div><div style="width: 13px; height: 13px; overflow: hidden; position: absolute; opacity: 0.7; right: 12px; top: 12px; z-index: 10000; cursor: pointer;"><img alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/mapcnt6.png" draggable="false" style="position: absolute; left: -2px; top: -336px; width: 59px; height: 492px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div><div class="gmnoprint" style="z-index: 1000001; position: absolute; right: 71px; bottom: 0px; width: 170px;"><div draggable="false" class="gm-style-cc" style="user-select: none; height: 14px; line-height: 14px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a style="text-decoration: none; cursor: pointer; display: none;">Map Data</a><span>Imagery ©2018 NASA, TerraMetrics</span></div></div></div><div class="gmnoscreen" style="position: absolute; right: 0px; bottom: 0px;"><div style="font-family: Roboto, Arial, sans-serif; font-size: 11px; color: rgb(68, 68, 68); direction: ltr; text-align: right; background-color: rgb(245, 245, 245);">Imagery ©2018 NASA, TerraMetrics</div></div><div class="gmnoprint gm-style-cc" draggable="false" style="z-index: 1000001; user-select: none; height: 14px; line-height: 14px; position: absolute; right: 0px; bottom: 0px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a href="https://www.google.com/intl/en-US_US/help/terms_maps.html" target="_blank" rel="noopener" style="text-decoration: none; cursor: pointer; color: rgb(68, 68, 68);">Terms of Use</a></div></div><button draggable="false" title="Toggle fullscreen view" aria-label="Toggle fullscreen view" type="button" style="background: none rgb(255, 255, 255); border: 0px; margin: 10px 14px; padding: 0px; position: absolute; cursor: pointer; user-select: none; width: 25px; height: 25px; overflow: hidden; top: 0px; right: 0px;"><img alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/sv9.png" draggable="false" class="gm-fullscreen-control" style="position: absolute; left: -52px; top: -86px; width: 164px; height: 175px; user-select: none; border: 0px; padding: 0px; margin: 0px;"></button><div draggable="false" class="gm-style-cc" style="user-select: none; height: 14px; line-height: 14px; display: none; position: absolute; right: 0px; bottom: 0px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a target="_blank" rel="noopener" title="Report errors in the road map or imagery to Google" href="https://www.google.com/maps/@21,0,2z/data=!3m1!1e3!10m1!1e1!12b1?source=apiv3&amp;rapsrc=apiv3" style="font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); text-decoration: none; position: relative;">Report a map error</a></div></div><div class="gmnoprint gm-bundled-control gm-bundled-control-on-bottom" draggable="false" controlwidth="28" controlheight="93" style="margin: 10px; user-select: none; position: absolute; bottom: 107px; right: 28px;"><div class="gmnoprint" controlwidth="28" controlheight="55" style="position: absolute; left: 0px; top: 38px;"><div draggable="false" style="user-select: none; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px; cursor: pointer; background-color: rgb(255, 255, 255); width: 28px; height: 55px;"><button draggable="false" title="Zoom in" aria-label="Zoom in" type="button" style="background: none; display: block; border: 0px; margin: 0px; padding: 0px; position: relative; cursor: pointer; user-select: none; width: 28px; height: 27px; top: 0px; left: 0px;"><div style="overflow: hidden; position: absolute; width: 15px; height: 15px; left: 7px; top: 6px;"><img alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl_hdpi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 120px; height: 54px;"></div></button><div style="position: relative; overflow: hidden; width: 67%; height: 1px; left: 16%; background-color: rgb(230, 230, 230); top: 0px;"></div><button draggable="false" title="Zoom out" aria-label="Zoom out" type="button" style="background: none; display: block; border: 0px; margin: 0px; padding: 0px; position: relative; cursor: pointer; user-select: none; width: 28px; height: 27px; top: 0px; left: 0px;"><div style="overflow: hidden; position: absolute; width: 15px; height: 15px; left: 7px; top: 6px;"><img alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl_hdpi.png" draggable="false" style="position: absolute; left: 0px; top: -15px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 120px; height: 54px;"></div></button></div></div><div class="gm-svpc" controlwidth="28" controlheight="28" style="background-color: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px; width: 28px; height: 28px; cursor: url(&quot;https://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;), default; touch-action: none; position: absolute; left: 0px; top: 0px;"><div style="position: absolute; left: 1px; top: 1px;"></div><div style="position: absolute; left: 1px; top: 1px;"><div aria-label="Street View Pegman Control" style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px;"><img alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/cb_scout5_hdpi.png" draggable="false" style="position: absolute; left: -147px; top: -26px; width: 215px; height: 835px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div aria-label="Pegman is on top of the Map" style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;"><img alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/cb_scout5_hdpi.png" draggable="false" style="position: absolute; left: -147px; top: -52px; width: 215px; height: 835px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div aria-label="Street View Pegman Control" style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;"><img alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/cb_scout5_hdpi.png" draggable="false" style="position: absolute; left: -147px; top: -78px; width: 215px; height: 835px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div></div><div class="gmnoprint" controlwidth="28" controlheight="0" style="display: none; position: absolute;"><div title="Rotate map 90 degrees" style="width: 28px; height: 28px; overflow: hidden; position: absolute; background-color: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px; cursor: pointer; display: none;"><img alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl4_hdpi.png" draggable="false" style="position: absolute; left: -141px; top: 6px; width: 170px; height: 54px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div class="gm-tilt" style="width: 28px; height: 28px; overflow: hidden; position: absolute; background-color: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px; top: 0px; cursor: pointer;"><img alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl4_hdpi.png" draggable="false" style="position: absolute; left: -141px; top: -13px; width: 170px; height: 54px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div></div><div class="gmnoprint" style="margin: 10px; z-index: 0; position: absolute; cursor: pointer; left: 0px; top: 0px;"><div class="gm-style-mtc" style="float: left; position: relative;"><div role="button" tabindex="0" title="Show street map" aria-label="Show street map" aria-pressed="false" draggable="false" style="direction: ltr; overflow: hidden; text-align: center; position: relative; color: rgb(86, 86, 86); font-family: Roboto, Arial, sans-serif; user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 8px; border-bottom-left-radius: 2px; border-top-left-radius: 2px; background-clip: padding-box; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; min-width: 21px;">Map</div><div style="background-color: white; z-index: -1; padding: 2px; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; position: absolute; left: 0px; top: 29px; text-align: left; display: none;"><div draggable="false" title="Show street map with terrain" style="color: rgb(0, 0, 0); font-family: Roboto, Arial, sans-serif; user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 6px 8px 6px 6px; direction: ltr; text-align: left; white-space: nowrap;"><span role="checkbox" style="box-sizing: border-box; position: relative; line-height: 0; font-size: 0px; margin: 0px 5px 0px 0px; display: inline-block; background-color: rgb(255, 255, 255); border: 1px solid rgb(198, 198, 198); border-radius: 1px; width: 13px; height: 13px; vertical-align: middle;"><div style="position: absolute; left: 1px; top: -2px; width: 13px; height: 11px; overflow: hidden; display: none;"><img alt="" src="https://maps.gstatic.com/mapfiles/mv/imgs8.png" draggable="false" style="position: absolute; left: -52px; top: -44px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 68px; height: 67px;"></div></span><label style="vertical-align: middle; cursor: pointer;">Terrain</label></div></div></div><div class="gm-style-mtc" style="float: left; position: relative;"><div role="button" tabindex="0" title="Show satellite imagery" aria-label="Show satellite imagery" aria-pressed="true" draggable="false" style="direction: ltr; overflow: hidden; text-align: center; position: relative; color: rgb(0, 0, 0); font-family: Roboto, Arial, sans-serif; user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 8px; border-bottom-right-radius: 2px; border-top-right-radius: 2px; background-clip: padding-box; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; min-width: 39px; border-left: 0px; font-weight: 500;">Satellite</div><div style="background-color: white; z-index: -1; padding: 2px; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; position: absolute; right: 0px; top: 29px; text-align: left; display: none;"><div draggable="false" title="Show imagery with street names" style="color: rgb(0, 0, 0); font-family: Roboto, Arial, sans-serif; user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 6px 8px 6px 6px; direction: ltr; text-align: left; white-space: nowrap;"><span role="checkbox" style="box-sizing: border-box; position: relative; line-height: 0; font-size: 0px; margin: 0px 5px 0px 0px; display: inline-block; background-color: rgb(255, 255, 255); border: 1px solid rgb(198, 198, 198); border-radius: 1px; width: 13px; height: 13px; vertical-align: middle;"><div style="position: absolute; left: 1px; top: -2px; width: 13px; height: 11px; overflow: hidden; display: none;"><img alt="" src="https://maps.gstatic.com/mapfiles/mv/imgs8.png" draggable="false" style="position: absolute; left: -52px; top: -44px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 68px; height: 67px;"></div></span><label style="vertical-align: middle; cursor: pointer;">Labels</label></div></div></div></div></div></div></div>
+            </div>
+          </div>
+          <div id="embed_url_div" style="" class="col-md-12">
+            <p class="mt3 mb0 fs11 bold">Share using this link</p>
+            <textarea class="form-control mt5 mb5" id="embed_url" style="width:100%;height:40px;resize:none;"></textarea>
+          </div>
+
+        </div>
+
+        <hr>
+
+      </div> <!-- /container -->
+
+    </main>
+
+    <footer class="container">
+      <p>© Copyright 2018 All Rights Reserved</p>
+    </footer>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDL5Ae9Mv4lqPyQ1wD3NUhHkpmuX85DFo4&amp;libraries=places,geometry"></script>
+
+    <script>
+//https://www.calcmaps.com/map-area/
+//https://www.daftlogic.com/projects-google-maps-area-calculator-tool.htm
+var ismobile = "0";
+var map, polyShape, polygonMode, polyPoints = [],
+marker, lastClickTime, clckTimeOut,
+fillColor = "#4285f4",
+lineColor = "#0000ff",
+opacity = .5,
+lineWeight = 4,
+geocoder = null,
+addressMarker;
+var pointMarkers = [];
+
+function isNumber(a) {
+  return !isNaN(parseFloat(a)) && isFinite(a)
+}
+
+function initialize() {
+  google.maps.Polygon.prototype.getBounds || (google.maps.Polygon.prototype.getBounds = function() {
+    for (var a = this.getPath(), b, c = a.getAt(0).lat(), d, h = a.getAt(0).lng(), k = 1; k < a.getLength(); k++) {
+      var f = a.getAt(k);
+      b = b < f.lat() ? b : f.lat();
+      c = c > f.lat() ? c : f.lat();
+      d = d < f.lng() ? d : f.lng();
+      h = h > f.lng() ? h : f.lng()
+    }
+    return new google.maps.LatLngBounds(new google.maps.LatLng(b, d), new google.maps.LatLng(c, h))
+  });
+
+  var a = {
+    zoom: start_zoom,
+    center: start_point,
+    mapTypeId: mapTypeId,
+    draggableCursor: "crosshair",
+    tilt: 0,
+    fullscreenControl: true
+  };
+
+  map = new google.maps.Map(document.getElementById("map_canvas"), a);
+  geocoder = new google.maps.Geocoder;
+  google.maps.event.addListener(map, "click", function(a) {
+    mapClick(a.latLng)
+  });
+  google.maps.event.addListener(map, "dblclick", function(a) {
+    mapClick(a.latLng)
+  });
+  if ("undefined" != typeof url_points && url_points ){
+    var tmpArr = url_points.split('|');
+    for (i = 0; i < tmpArr.length; i++){
+      var getLatlng = tmpArr[i].split(',');
+      polyPoints.push(new google.maps.LatLng(getLatlng[0], getLatlng[1]));
+    }
+  }
+
+  createPolyshape();
+
+  var autocomplete = new google.maps.places.Autocomplete((
+    document.getElementById('addressInput')), { });
+
+}
+
+function showAddress(a) {
+  geocoder && geocoder.geocode({
+    address: a
+  }, function(c, g) {
+    if (c && g == google.maps.GeocoderStatus.OK) point = c[0].geometry.location, placeNewMark(point);
+
+    else {
+      var b = a.split(",");
+      if (2 == b.length && isNumber(b[0]) && isNumber(b[1])) {
+        var e = parseFloat(b[0]),
+        b = parseFloat(b[1]);
+        if (90 >= e && -90 <= e && 180 >= b && -180 <= b) return placeNewMark(new google.maps.LatLng(e, b)), !0
+      }
+    if (a.length > 0) {
+                //alert(a + " not found");
+              }
+            }
+          })
+}
+
+function placeNewMark(a) {
+  addressMarker && addressMarker.setMap(null);
+  addressMarker = new google.maps.Marker({
+    position: a,
+    map: map,
+    title: "",
+  });
+  map.setCenter(a);
+  map.setZoom(20)
+}
+
+function createPolyshape() {
+  polyShape = new google.maps.Polygon({
+    path: polyPoints,
+    strokeColor: lineColor,
+    strokeOpacity: opacity,
+    strokeWeight: lineWeight,
+    fillColor: fillColor,
+    fillOpacity: opacity,
+    editable: !0
+  });
+  google.maps.event.addListener(polyShape.getPath(), "set_at", function() {
+    polyPoints = polyShape.getPath();
+    drawCoordinates()
+  });
+  google.maps.event.addListener(polyShape.getPath(), "insert_at", function() {
+    polyPoints = polyShape.getPath();
+    drawCoordinates()
+  });
+  google.maps.event.addListener(polyShape.getPath(), "remove_at",
+    function() {
+      polyPoints = polyShape.getPath();
+      drawCoordinates()
+    });
+  "undefined" != typeof polyPoints && 0 < polyPoints.length && (drawCoordinates(), zoomToPoly())
+}
+
+function singleClick(a) {
+  polygonMode = !1;
+  window.clearTimeout(clckTimeOut);
+  clckTimeOut = null;
+  polyPoints = polyShape.getPath();
+  polyPoints.push(a);
+  drawCoordinates()
+}
+
+function removeLastPoint() {
+  polyPoints = polyShape.getPath();
+
+  polyPoints.pop();
+  drawCoordinates()
+}
+
+function clearMap() {
+  clearOverlays();
+  for (polyPoints = polyShape.getPath(); 0 < polyPoints.getLength();) {
+    polyPoints.pop();
+  }
+  $("#addressInput").val('');
+  document.getElementById("status").innerHTML = '';
+}
+
+function clearOverlays() {
+  addressMarker && addressMarker.setMap(null);
+  marker && marker.setMap(null);
+  polyShape && polyShape.setMap(null)
+}
+
+function toggleDrawMode() {
+  clearOverlays();
+  polyShape = null;
+  polygonMode = document.getElementById("drawMode_polygon").checked;
+  drawCoordinates()
+}
+
+function drawCoordinates() {
+  clearOverlays();
+  polyPoints = polyShape.getPath();
+  0 < polyPoints.length && (marker = new google.maps.Marker({
+    position: polyPoints[polyPoints.length - 1],
+    map: map
+  }));
+  polyShape && polyShape.setMap(map);
+  var a = google.maps.geometry.spherical.computeArea(polyPoints),
+  c = a / 1E6,
+  g = 3.86102159E-7 * a,
+  b = 2.47105381E-4 * a,
+  e = 10.7639104 * a;
+  if (2 < polyPoints.length && !polyPoints.getAt(0).equals(polyPoints.getAt(polyPoints.length - 1))) {
+    tempPoints = getPathArray(polyShape);
+    var d = google.maps.geometry.spherical.computeLength(tempPoints)
+  } else d =
+  google.maps.geometry.spherical.computeLength(polyPoints);
+  var h = d / 1E3,
+  k = 6.21371E-4 * d,
+  f = 3.28084 * d,
+  c = "<b>Area:</b> "
+  + a.toFixed(0) + " Meters<sup>2</sup> | "
+  + e.toFixed(0) + " Feet<sup>2</sup> | "
+  + b.toFixed(2) + " Acres | "
+  + g.toFixed(3) + " Miles<sup>2</sup> | "
+  + c.toFixed(3) + " Km<sup>2</sup>"
+  + "<br/><b>Perimeter:</b> "
+  + d.toFixed(0) + " Meters | "
+  + f.toFixed(0) + " Feet | "
+  + k.toFixed(3) + " Miles | "
+  + h.toFixed(3) + " Km";
+
+  document.getElementById("status").innerHTML = c;
+  "undefined" != typeof update_input && 0 < update_input.length && ("undefined" !=
+    typeof update_input_unit ? "m" == update_input_unit ? document.getElementById(update_input).value = a.toFixed(1) : document.getElementById(update_input).value = e.toFixed(0) : document.getElementById(update_input).value = e.toFixed(0));
+  setAllMarkers();
+  createEmbedLink();
+
+
+}
+
+
+
+
+function calculate_estimate(a) {
+  a = document.getElementById("area").value;
+  price = document.getElementById("price_per_area").value;
+  0 < price.length && 0 < price && 0 < a.length && 0 < a && (total = parseFloat(price) * parseFloat(a), total = total.toFixed(2), document.getElementById("total_cost").innerHTML = total)
+}
+
+function displayMeters() {
+  var a = google.maps.geometry.spherical.computeArea(polyPoints);
+  document.getElementById("area").value = a.toFixed(2)
+}
+
+function displayAcres() {
+  var a = 2.47105381E-4 * google.maps.geometry.spherical.computeArea(polyPoints);
+  document.getElementById("area_display").innerHTML = a.toFixed(3)
+}
+
+function zoomToPoly() {
+  if (polyShape && 0 < polyPoints.length) {
+    var a = polyShape.getBounds();
+    map.fitBounds(a)
+  }
+}
+
+function mapClick(a) {
+  var c = (new Date).getTime();
+  if (10 > c - lastClickTime) return 0;
+  lastClickTime = c;
+  clckTimeOut ? (window.clearTimeout(clckTimeOut), clckTimeOut = null) : clckTimeOut = window.setTimeout(function() {
+    singleClick(a)
+  }, 200)
+}
+
+function createEmbedLink() {
+    //url = 'https://www.webtechnocrats.website/map-area/?';
+    /*url = 'http://localhost/gmap/areacalculate/?';
+    points_text_array = "[";
+    for (i = 0; i < polyPoints.length; i++) 0 < i && (points_text_array += ","), points_text_array += "[" + polyPoints.getAt(i).lat() + "," + polyPoints.getAt(i).lng() + "]";
+    points_text_array += "]";
+    url += "&points=" + encodeURIComponent(points_text_array);
+    $("#embed_url_div").show();
+    $("#embed_url").val(url);*/
+
+    url = 'http://localhost/gmap/areacalculate/?';
+    points_text_array = "";
+    for (i = 0; i < polyPoints.length; i++) 0 < i && (points_text_array += "|"), points_text_array +=  polyPoints.getAt(i).lat() + "," + polyPoints.getAt(i).lng() ;
+      url += "&points=" + encodeURIComponent(points_text_array);
+    $("#embed_url_div").show();
+    $("#embed_url").val(url);
+  }
+
+  function clearAllPointMarkers(){
+    if(pointMarkers.length > 0){
+      for(i in pointMarkers){
+        pointMarkers[i].setMap(null);
+      }
+      pointMarkers = [];
+    }
+  }
+  function setAllMarkers(){
+    clearAllPointMarkers();
+  //to show markers
+
+  if(polyPoints.length > 0){}
+    for (var i = 0; i < polyPoints.getLength(); i++) {
+      var tmpLat = polyPoints.getAt(i).lat();
+      var tmpLng = polyPoints.getAt(i).lng();
+      var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(parseFloat(tmpLat), parseFloat(tmpLng)),
+        map: map,
+        icon: "marker3.png",
+      });
+      pointMarkers.push(marker);
+
+    }
+
+  }
+  function getPathArray(a) {
+    points = a.getPath();
+    path = [];
+    for (a = 0; a < points.length; a++) path.push(points.getAt(a));
+      2 < points.length && (points.getAt(0).lat() != points.getAt(points.length - 1).lat() || points.getAt(0).lng() != points.getAt(points.length - 1).lng()) && path.push(points.getAt(0));
+    return path
+  }
+</script>
+<script>
+  function resizeMap(h) {
+    var nh = (h-240);
+    document.getElementById("map_area").style.height = (nh) + "px";
+    document.getElementById("map_canvas").style.height = (nh) + "px";
+    google.maps.event.trigger(map, "resize");
+  }
+  function getstartZoom(user_location) {
+    var zooms = [
+    ['Portugal', 6],
+    ['Brasil', 4],
+    ['United States', 20],
+    ['United Kingdom', 5],
+    ['India', 5],
+    ['Canada', 4],
+    ['Australia', 4],
+    ['Italy', 6],
+    ['Philippines', 6],
+    ['Switzerland', 7],
+    ['South Africa', 5]
+    ];
+    for (var i = 0; i < zooms.length; i++) {
+      if (user_location == zooms[i][0]) {
+        return ismobile == 1 ? zooms[i][1] - 1 : zooms[i][1];
+      }
+    }
+    return 2;
+  }
+
+  function getUrlParam(url, paramName){
+    var str = url;
+
+    var match = str.match(/[^=&?]+\s*=\s*[^&#]*/g);
+    var obj = {};
+
+    for ( var i = match.length; i--; ) {
+      var spl = match[i].split("=");
+      var name = spl[0].replace("[]", "");
+      var value = spl[1];
+
+      obj[name] = obj[name] || [];
+      obj[name].push(value);
+    }
+    return obj[paramName]
+  }
+  function GetURLParameter(sParam)
+  {
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++)
+    {
+      var sParameterName = sURLVariables[i].split('=');
+      if (sParameterName[0] == sParam)
+      {
+        return sParameterName[1];
+      }
+    }
+  }
+  var tmpGetParam = decodeURIComponent(GetURLParameter('points'));
+  tmpGetParam = (tmpGetParam == 'undefined') ? null : tmpGetParam;
+
+  url_points = tmpGetParam;
+  var u_location = '';
+  var start_point = null;
+var start_zoom = getstartZoom(u_location); //0-20
+var mapTypeId = 'hybrid';
+
+function init_map() {
+  var geocoder = new google.maps.Geocoder();
+  geocoder.geocode({ 'address': u_location }, function(results, status){
+    if (status == google.maps.GeocoderStatus.OK) {
+      start_point = results[0].geometry.location;
+      initialize();
+    } else {
+      start_point = new google.maps.LatLng(21, -0);
+      start_zoom = 2
+      mapTypeId = 'satellite';
+      initialize();
+    }
+  });
+}
+
+$(document).ready(function() {
+  init_map();
+  resizeMap($(window).height());
+  $("#addressInput").geocomplete(options)
+  .bind("geocode:result", function(event, result) {
+    $("#addressSearchButton").click();
+  });
+
+  var eu = document.getElementById("embed_url");
+  eu.onfocus = function() {
+    eu.select();
+    eu.onmouseup = function() {
+      eu.onmouseup = null;
+      return !1
+    }
+  }
+});
+$("#addressInput").keyup(function(event) {
+  if (event.keyCode == 13) {
+        //$("#addressSearchButton").click();
+      }
+    });
+
+  </script>
+
+  <div class="pac-container pac-logo hdpi" style="display: none; width: 654px; position: absolute; left: 60px; top: 97px;"></div></body></html>
